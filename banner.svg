@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+    <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#f4f6f8" />
+        </linearGradient>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+        </pattern>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+
+    <!-- Bottom orange accent -->
+    <rect x="0" y="295" width="100%" height="5" fill="#E64A19"/>
+    
+    <!-- Circuit abstract styling -->
+    <g stroke="#E64A19" stroke-width="2" fill="none" opacity="0.6">
+        <path d="M 0 50 H 180 L 220 90 H 1200"/>
+        <path d="M 0 250 H 250 L 280 220 H 1200"/>
+        <path d="M 150 0 V 40 L 170 60 V 300"/>
+        
+        <!-- Nodes -->
+        <circle cx="180" cy="50" r="5" fill="#E64A19"/>
+        <circle cx="220" cy="90" r="5" fill="#E64A19"/>
+        <circle cx="250" cy="250" r="5" fill="#E64A19"/>
+        <circle cx="280" cy="220" r="5" fill="#E64A19"/>
+        <circle cx="150" cy="40" r="3" fill="#E64A19"/>
+        <circle cx="170" cy="60" r="3" fill="#E64A19"/>
+    </g>
+
+    <!-- Main Title -->
+    <text x="600" y="150" fill="#212529" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="62" font-weight="800" text-anchor="middle" letter-spacing="-1">
+        Jio AirFiber STB Teardown
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="600" y="210" fill="#E64A19" font-family="ui-sans-serif, monospace, sans-serif" font-size="22" font-weight="700" letter-spacing="3" text-anchor="middle">
+        MODEL: IPSTB JMSC200A2_J • HARDWARE ANALYSIS
+    </text>
+</svg>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Jio Set-Top Box (IPSTB JMSC200A2_J) Teardown - AirFiber Edition</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Jio Set-Top Box (IPSTB JMSC200A2_J) Teardown - AirFiber Edition">
+    <meta name="description" content="In-depth disassembly and hardware teardown of the Jio Set-Top Box Model IPSTB JMSC200A2_J (AirFiber connection). Exploring the Amlogic S905X4 chip, YMTC eMMC, and RAM.">
+    <meta name="keywords" content="Jio Set-Top Box, IPSTB JMSC200A2_J, Jio AirFiber STB, Disassembly, Teardown, Amlogic S905X4, inside Jio STB, hardware, PCB, eMMC, SCY YMTC, RAM, JioFiber">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="Hardware Research Team">
+
+    <!-- 23 Indian Languages SEO Data (Meta Descriptions) -->
+    <meta name="description" lang="en" content="Jio Set-Top Box IPSTB JMSC200A2_J (AirFiber) Teardown, Disassembly, and Hardware Specifications">
+    <meta name="description" lang="hi" content="जिओ सेट-टॉप बॉक्स IPSTB JMSC200A2_J (एयरफाइबर) टियरडाउन और हार्डवेयर स्पेसिफिकेशंस">
+    <meta name="description" lang="bn" content="জিও সেট-টপ বক্স IPSTB JMSC200A2_J (এয়ারফাইবার) টিয়ারডাউন এবং হার্ডওয়্যার বিবরণ">
+    <meta name="description" lang="te" content="జియో సెట్-టాప్ బాక్స్ IPSTB JMSC200A2_J (AirFiber) టియర్‌డౌన్ మరియు హార్డ్‌వేర్">
+    <meta name="description" lang="mr" content="जिओ सेट-टॉप बॉक्स IPSTB JMSC200A2_J (AirFiber) टियरडाउन आणि हार्डवेअर स्पेसिफिकेशन">
+    <meta name="description" lang="ta" content="ஜியோ செட்-டாப் பாக்ஸ் IPSTB JMSC200A2_J (ஏர்ஃபைபர்) டியர்டவுன் மற்றும் வன்பொருள்">
+    <meta name="description" lang="gu" content="જીયો સેટ-ટોપ બોક્સ IPSTB JMSC200A2_J એરફાઇબર ટિયરડાઉન અને હાર્ડવેર સ્પષ્ટીકરણો">
+    <meta name="description" lang="ur" content="جیو سیٹ ٹاپ باکس IPSTB JMSC200A2_J ٹیئر ڈاؤن اور ہارڈویئر کی تفصیلات">
+    <meta name="description" lang="kn" content="ಜಿಯೋ ಸೆಟ್-ಟಾಪ್ ಬಾಕ್ಸ್ IPSTB JMSC200A2_J (AirFiber) ಟಿಯರ್‌ಡೌನ್ ಮತ್ತು ಯಂತ್ರಾಂಶ ವಿಶೇಷಣಗಳು">
+    <meta name="description" lang="or" content="ଜିଓ ସେଟ୍-ଟପ୍ ବକ୍ସ IPSTB JMSC200A2_J ଏୟାରଫାଇବର ଟିୟରଡାଉନ୍">
+    <meta name="description" lang="ml" content="ജിയോ സെറ്റ്-ടോപ്പ് ബോക്സ് IPSTB JMSC200A2_J (എയർഫൈബർ) ടിയർഡൗൺ, സവിശേഷതകൾ">
+    <meta name="description" lang="pa" content="ਜੀਓ ਸੈੱਟ-ਟਾਪ ਬਾਕਸ IPSTB JMSC200A2_J ਏਅਰਫਾਈਬਰ ਟੀਅਰਡਾਊਨ">
+    <meta name="description" lang="as" content="জিঅ' ছেট-টপ বক্স IPSTB JMSC200A2_J এয়াৰফাইবাৰ টিকিৰডাউন আৰু হাৰ্ডৱেৰ নিৰ্দিষ্টকৰণ">
+    <meta name="description" lang="brx" content="जिअ' सेट-टप बक्स IPSTB JMSC200A2_J टियरडाउन आरो हार्डवेर">
+    <meta name="description" lang="doi" content="जिओ सेट-टॉप बॉक्स IPSTB JMSC200A2_J (एयरफाइबर) टियरडाउन">
+    <meta name="description" lang="ks" content="جیو سیٹ ٹاپ باکس IPSTB JMSC200A2_J ٹیئر ڈاؤن">
+    <meta name="description" lang="kok" content="जियो सेट-टॉप बॉक्स IPSTB JMSC200A2_J एयरफायबर टियरडाउन">
+    <meta name="description" lang="mai" content="जिओ सेट-टॉप बॉक्स IPSTB JMSC200A2_J एयरफाइबर टियरडाउन">
+    <meta name="description" lang="mni" content="জিও সেত-তোপ বোক্স IPSTB JMSC200A2_J তিয়রদাউন অমদি হর্দৱের">
+    <meta name="description" lang="ne" content="जियो सेट-टप बक्स IPSTB JMSC200A2_J एयरफाइबर टियरडाउन र हार्डवेयर स्पेसिफिकेसन">
+    <meta name="description" lang="sa" content="जिओ सेट-टॉप बॉक्स IPSTB JMSC200A2_J (एयरफाइबर) टियरडाउन">
+    <meta name="description" lang="sat" content="ᱡᱤᱭᱳ ᱥᱮᱴ-ᱴᱚᱯ ᱵᱚᱠᱥ IPSTB JMSC200A2_J ᱴᱤᱭᱟᱨᱰᱟᱩᱱ">
+    <meta name="description" lang="sd" content="جيو سيٽ ٽاپ باڪس IPSTB JMSC200A2_J ٽيئر ڊائون">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Jio Set-Top Box (IPSTB JMSC200A2_J) Teardown - AirFiber Edition">
+    <meta property="og:description" content="Detailed hardware components inside the Jio AirFiber Set-Top Box IPSTB JMSC200A2_J, analyzing the Amlogic SoC, Memory, and eMMC.">
+    <meta property="og:image" content="https://CodeWsuraj.github.io/jio-airfiber-stb-teardown/assets/1.webp">
+    <meta property="og:url" content="https://CodeWsuraj.github.io/jio-airfiber-stb-teardown/">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Jio Set-Top Box (Model IPSTB JMSC200A2_J) Teardown">
+    <meta property="twitter:description" content="Discover the hardware inside the Jio AirFiber STB (IPSTB JMSC200A2_J) including Amlogic S905X4 and YMTC eMMC specifics.">
+    <meta property="twitter:image" content="https://CodeWsuraj.github.io/jio-airfiber-stb-teardown/assets/1.webp">
+
+    <!-- JSON-LD SEO for LLMs & Search Citation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://CodeWsuraj.github.io/jio-airfiber-stb-teardown/"
+      },
+      "headline": "Jio Set-Top Box Model IPSTB JMSC200A2_J (AirFiber) Disassembly & Specifications",
+      "description": "A comprehensive hardware teardown of the Jio Set-Top Box (AirFiber edition, Model IPSTB JMSC200A2_J), including high-resolution board pictures and chip details like the Amlogic S905X4 SoC.",
+      "author": {
+        "@type": "Organization",
+        "name": "Hardware Research Team"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Jio Set-Top Box (AirFiber)",
+        "model": "IPSTB JMSC200A2_J",
+        "brand": {
+          "@type": "Brand",
+          "name": "Jio"
+        }
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #E64A19;
+            --primary-dark: #D84315;
+            --bg-main: #f4f6f8;
+            --surface-1: #ffffff;
+            --surface-2: #f1f3f5;
+            --text-main: #212529;
+            --text-secondary: #495057;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* High-performance SEO system fonts */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--surface-1);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(230, 74, 25, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        header h1 span {
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .section-header {
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 2px;
+            width: 80px;
+            background-color: var(--primary);
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+        }
+
+        /* Responsive Table Design (Square & Flat) */
+        .table-wrapper {
+            background-color: var(--surface-1);
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--surface-2);
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        td strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        /* Technical Info Block */
+        .tech-info {
+            background-color: var(--surface-1);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-left: 5px solid var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .tech-info h2 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .tech-info p {
+            margin-bottom: 1rem;
+        }
+
+        .tech-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Seamless Image Gallery Grid (Square Cells, No Gaps) */
+        .gallery-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 0;
+            background-color: var(--surface-1);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+            border-bottom: none; /* remove bottom border matching issues */
+            border-right: none;
+        }
+
+        .gallery-container picture,
+        .gallery-container img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            object-fit: cover;
+            vertical-align: middle; 
+            cursor: zoom-in;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-container img:hover {
+            opacity: 0.9;
+        }
+
+        /* Lightbox (Zoom Modal) Styles */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid var(--border-color);
+        }
+
+        footer {
+            background-color: var(--surface-1);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 3rem 1rem;
+            }
+            main {
+                padding: 1rem;
+            }
+            .tech-info {
+                padding: 1.5rem;
+            }
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            th, td {
+                padding: 12px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <span class="badge">Model: IPSTB JMSC200A2_J</span>
+            <h1>Jio AirFiber Set-Top Box<br><span>Hardware Teardown</span></h1>
+            <p>An exclusive and pristine look inside the robust Jio Set-Top Box bundled with the AirFiber subscription. View component-level analytics, specifications, and highly detailed internal PCB shots.</p>
+        </div>
+    </header>
+
+    <main>
+        
+        <article class="tech-info">
+            <h2 style="margin-bottom: 1rem;">System Architecture & Overview</h2>
+            <p>The <strong>Jio Set-Top Box (Model: IPSTB JMSC200A2_J)</strong>, provided with Jio AirFiber subscriptions, represents a modern, high-performance media delivery environment. Designed for flawless 4K UHD streaming, it leverages top-tier silicone architectures suited for decoding emerging video formats flawlessly while navigating intense networking requirements.</p>
+            <p>At the center of the IPSTB JMSC200A2_J rests the highly reliable <strong>Amlogic S905X4 Application Processor</strong>. This 64-bit quad-core ARM Cortex-A55 engine utilizes a Mali-G31 MP2 GPU, granting it supreme native support for advanced codecs including AV1, VP9, and H.265 at up to 4K 60fps outputs. Coupled strategically with <strong>SCY Memory variants (LPDDR4)</strong> and high-density <strong>YMTC Xtacking eMMC 5.1 storage</strong>, it mitigates bottlenecking—ensuring a fluid user interface, zero-stutter playback, and ultra-fast application load times.</p>
+        </article>
+
+        <div class="section-header">
+            <h2>Detailed Component Specifications</h2>
+        </div>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chip Model</th>
+                        <th>Component Type</th>
+                        <th>Manufacturer</th>
+                        <th>Core Specifications & Capacity</th>
+                        <th>Package Details</th>
+                        <th>Visible Markings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Main SoC</strong></td>
+                        <td>Application Processor (SoC)</td>
+                        <td>Amlogic</td>
+                        <td>
+                            • Quad-core ARM Cortex-A55 (up to 2.0 GHz, 12nm process)<br>
+                            • GPU: Mali-G31 MP2 (OpenGL ES 3.2, Vulkan 1.1, OpenCL 2.0)<br>
+                            • Memory: 32-bit DDR3/3L/4, LPDDR3/4 (up to 4 GB typical)<br>
+                            • Storage I/F: eMMC 5.0, NAND Flash<br>
+                            • Video: 4K@60/75 decoding (H.265/HEVC, VP9, AV1), HDMI 2.1<br>
+                            • Other: Gigabit Ethernet, USB 3.0, NPU optional 
+                        </td>
+                        <td>BGA package (square, metallic top)<br>Standard application: Premium 4K TV boxes</td>
+                        <td>@mlogic<br>S905X4<br>MA1356-0604<br><em>(faint: -NU23)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>eMMC Storage</strong></td>
+                        <td>eMMC 5.1 NAND Flash Module</td>
+                        <td>SCY (Shenzhen Shichuangyi Electronics)</td>
+                        <td>
+                            • 32 GB (256 Gb TLC x 1 Die)<br>
+                            • Interface: eMMC 5.1 (JEDEC Compliant)<br>
+                            • Architecture: YMTC Xtacking (high-density 3D stacking)<br>
+                            • Voltage: 1.8V / 3.3V Support
+                        </td>
+                        <td>FBGA 153, 11.5 × 13 mm package<br>High-speed embedded module, common in Rockchip eMMC mass production</td>
+                        <td>SCY<br>E32GCYNB1ABE00<br>2525 AO 060665<br>YMTC Xtacking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Memory Chip (Variant 1)</strong></td>
+                        <td>Memory Module (LPDDR4 DRAM)</td>
+                        <td>SCY (Shenzhen Shichuangyi Electronics)</td>
+                        <td>
+                            • Low-Power Double Data Rate 4 (LPDDR4)<br>
+                            • High-speed data throughput caching module<br>
+                            • Engineered alongside system SoC logic
+                        </td>
+                        <td>Black square BGA package<br>Size parallel to the eMMC chip</td>
+                        <td>SCY<br>SD40D86G-FC<br>2528C 070526<br>CABCX24K11C86F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Memory Chip (Variant 2)</strong><br><em>(Qty: 2)</em></td>
+                        <td>Memory Module (LPDDR4 DRAM)</td>
+                        <td>SCY (Shenzhen Shichuangyi Electronics)</td>
+                        <td>
+                            • Formulates dual-channel RAM operations<br>
+                            • Combined memory pool typically scales up to 4GB in S905X4 boards for robust 4K streaming
+                        </td>
+                        <td>Black square BGA package<br>FG variant of the FC chip (Possible package or latency revision)</td>
+                        <td>SCY<br>SD40D86G-FG<br>2528C 070526<br>CABCX24K11C86F</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header">
+            <h2>High-Resolution Internal Tour</h2>
+        </div>
+        
+        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Direct sequential PCB captures mapping the internal architecture of the IPSTB JMSC200A2_J without interruption.</p>
+
+        <!-- Zero-gap seamless image gallery -->
+        <article class="gallery-container">
+            <img src="assets/1.webp" alt="Amlogic S905X4 Main SoC Chip Close-Up - Jio AirFiber STB IPSTB JMSC200A2_J Teardown" loading="lazy">
+            <img src="assets/2.webp" alt="SCY YMTC Xtacking eMMC 32GB Storage & LPDDR4 Memory Chip - Jio AirFiber STB Disassembly" loading="lazy">
+            <img src="assets/3.webp" alt="SCY Dual-Channel LPDDR4 Memory Chip SD40D86G-FG Focus - Jio STB IPSTB JMSC200A2_J PCB" loading="lazy">
+            <img src="assets/4.webp" alt="Jio AirFiber STB High-Resolution Internal PCB Architecture - Model IPSTB JMSC200A2_J Teardown" loading="lazy">
+            <img src="assets/5.webp" alt="Jio AirFiber STB Internal Hardware Components & Circuit Layout" loading="lazy">
+            <img src="assets/6.webp" alt="Jio AirFiber Set-Top Box Network Interfaces and Power delivery logic" loading="lazy">
+            <img src="assets/7.webp" alt="Thermal Management & Shielding Footprints on Jio AirFiber STB JMSC200A2_J" loading="lazy">
+            <img src="assets/8.webp" alt="Peripheral Ports USB & HDMI Traces on Jio AirFiber STB Board" loading="lazy">
+            <img src="assets/9.webp" alt="Antenna Layout and WiFi Connectivity Modules inside Jio AirFiber Set-Top Box" loading="lazy">
+            <img src="assets/10.webp" alt="Jio AirFiber STB Motherboard Underside High Resolution Scan" loading="lazy">
+            <img src="assets/11.webp" alt="Close-up of Capacitors and Voltage Regulators - Jio STB IPSTB JMSC200A2_J" loading="lazy">
+            <img src="assets/12.webp" alt="Micro-soldered surface mount chips on Jio AirFiber STB Motherboard" loading="lazy">
+            <img src="assets/13.webp" alt="Jio Set-Top Box AirFiber Connection Ports & Casing Alignment" loading="lazy">
+            <img src="assets/14.webp" alt="Detailed IO Shielding on Jio AirFiber IPSTB JMSC200A2_J" loading="lazy">
+            <img src="assets/15.webp" alt="Macro lens scan of S905X4 Sub-components inside Jio STB" loading="lazy">
+            <img src="assets/16.webp" alt="Ethernet and Digital Audio IO trace lines - Jio AirFiber Route" loading="lazy">
+            <img src="assets/17.webp" alt="Final Hardware Overview - Completed Jio AirFiber STB JMSC200A2_J Teardown" loading="lazy">
+        </article>
+
+        <!-- Community & Modding Section -->
+        <article class="tech-info" style="margin-top: 3rem; background-color: var(--surface-2); border-left: 5px solid #0056b3;">
+            <h2 style="color: #0056b3; margin-bottom: 1rem;">Community, Firmware & Modding</h2>
+            
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 0.5rem;">The JFC-Group Github</h3>
+            <p>For enthusiasts looking to break boundaries and maximize the capability of their <strong>Jio AirFiber (AF)</strong> and <strong>JioFiber (JF)</strong> devices, the <a href="https://github.com/JFC-Group" target="_blank" rel="noopener noreferrer" style="color: #0056b3; font-weight: bold; text-decoration: none;">JFC-Group on GitHub</a> is heavily recommended.</p>
+            <p style="margin-bottom: 1.5rem;">Their open-source community repository hosts custom firmware scripts, SSH/Dropbear servers adapted to MIPSEL routers, Cloudflare tunnel configurations, modded PJSIP/microSIP implementations, and specialized Go-based tools configured to unlock JioTV features seamlessly.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 0.5rem;">Removing Ads (AdGuard DNS)</h3>
+            <p style="margin-bottom: 1.5rem;">You can mitigate system-wide advertisements by changing the default DNS to AdGuard. For a step-by-step tutorial on router-level DNS intervention, <a href="https://youtu.be/X86RIDCJUoc" target="_blank" rel="noopener noreferrer" style="color: #0056b3; font-weight: bold; text-decoration: none;">watch the last 5 minutes of this guide here</a>.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 0.5rem;">Archived Custom ROM & Sideloading Resources</h3>
+            <p style="background-color: #fff3cd; color: #856404; padding: 10px; border-left: 4px solid #ffeeba; margin-bottom: 1rem; font-size: 0.9rem;">
+                <strong>⚠️ DISCLAIMER:</strong> The methods listed below are mostly archived. Following OTA firmware updates post-Nov 2022, direct sideloading access via servers was aggressively patched. Proceed entirely at your own risk. Custom ROM environments may result in permanent bricking.
+            </p>
+            <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.8;">
+                <li><a href="https://xdaforums.com/t/how-to-install-third-party-apps-in-jio-fibre-android-stb-jhsd200.4072065/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">XDA Thread: How to Install Third-Party Apps (Archived Method)</a></li>
+                <li><a href="https://xdaforums.com/t/closed-custom-rom-for-jio-stb-india-all-models.4367881/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">XDA Thread: Custom ROM for Jio STB (Closed File System references)</a></li>
+                <li><a href="https://www.hifivision.com/threads/android-tv-on-jio-setup-box.88421/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">HiFiVision: Android TV discussions natively on Jio Box</a></li>
+                <li><a href="https://broadband.forum/threads/jio-tv-set-top-box-how-to-revert-to-stock-firmware-from-custom-rom.221698/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">Broadband Forum: How to Revert to Stock Firmware from Custom ROMs</a></li>
+            </ul>
+
+        </article>
+
+    </main>
+
+    <!-- Lightbox Element -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image Zoom View" tabindex="-1" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Zoomed View">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jio Set-Top Box Teardown Project. Information compiled for research and educational accessibility concerning Model IPSTB JMSC200A2_J.</p>
+    </footer>
+
+    <!-- Zoom Script -->
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+            // Set focus for accessibility when opened
+            document.getElementById('lightbox').focus();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.getElementById('lightbox-img').src = ''; // Clear image to free memory
+        }
+
+        // Attach click events to all gallery images
+        document.querySelectorAll('.gallery-container img').forEach(img => {
+            // Support both click and keyboard (Enter)
+            img.setAttribute('tabindex', '0');
+            img.addEventListener('click', function() {
+                openLightbox(this.src);
+            });
+            img.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') openLightbox(this.src);
+            });
+        });
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && document.getElementById('lightbox').style.display === 'flex') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
